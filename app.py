@@ -1,4 +1,5 @@
 #Import Libraries
+import pylint
 from flask import Flask
 import pandas as pd
 
@@ -12,5 +13,4 @@ mydb = mysql.connector.connect(
     passwd="Thecheezer1!",
     database="drinks_database"
 )
-
 
