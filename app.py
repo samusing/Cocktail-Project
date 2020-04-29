@@ -1,6 +1,6 @@
 #Import Libraries
 from flask import Flask
-import pandas as import pd
+import pandas as pd
 
 app = Flask(__name__)
 
