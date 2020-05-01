@@ -1,5 +1,5 @@
 #Import Libraries
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -9,7 +9,11 @@ def index():
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
-    return render_template()
+    if request.method == "POST":
+        user = request.form["nm"] #store data that was typed into name form through the dictionary key nm (for the input box) store in variable called user
+        return redirect(url_for("user", usr=user))
+    else:
+        return render_template('login.html')
 
 @app.route("/<usr>")
 def user(usr):
