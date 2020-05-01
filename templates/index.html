@@ -5,5 +5,13 @@
 {% endblock %} 
 
 {% block body %}
-<h1> Make Cocktails</h1>
+<h1> Make Cocktails Here</h1>
+
+<form>
+    <input type="text" name="cocktailName" placeholder="Cocktail Name"/>
+    <input type="submit" name="submit" value="submit"/>
+</form>
+
+<p> You selected, {{cocktailName}}</p>
+
 {% endblock %} 
