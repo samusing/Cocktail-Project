@@ -40,3 +40,15 @@ if __name__ == "__main__":
 
 # if __name__ == "__main__":
 #     app.run(debug=True)
+
+
+#Import database
+# import mysql.connector
+# mydb = mysql.connector.connect(
+#     host="localhost",
+#     user="root",
+#     passwd="Thecheezer1!",
+#     database="drinks_database"
+# )
+
+
