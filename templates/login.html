@@ -3,6 +3,16 @@
 {% block title %}  {% endblock%}
 
 {% block body %}
+    {% with messages = get_flashed_messages() %}
+        <!-- Check if there are any messages to display -->
+        {% if messages %} 
+            <!-- If there are messages to display, loop through them -->
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor%}
+        {% endif %}
+    {% endwith %}
+
 <form action="#" method="post">
     <p>Name: </p>
     <p><input type="text" name="nm"/></p>

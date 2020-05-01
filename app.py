@@ -1,5 +1,5 @@
 #Import Libraries
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from datetime import timedelta
 
 app = Flask(__name__)
@@ -9,7 +9,7 @@ app.secret_key = "hello"
 
 #Permanent Sessions
 #Session data is deleted when browser is closed. Session data is stored in a temporary directory on the server and length of session can be defined
-app.permanent_session_lifetime = timdelta(days=5)
+app.permanent_session_lifetime = timedelta(days=5)
 
 @app.route("/")
 def index():
@@ -34,13 +34,14 @@ def user():
     #Check if there is any information in the session
     if "user" in session:
         user = session["user"] #Access user value after you have checked that it exists
-        return f"<h1>{user}</h1>" 
+        return render_template("user.html", user=user)
     else:
         return redirect(url_for("login"))
 
 @app.route("/logout")
 def logout():
     session.pop("user", None) #Remove user data from session, remove session data from dictionary
+    flash("You have been successfully logged out", "info") #info is the category for a message
     return redirect(url_for("login"))
 
 if __name__ == "__main__":
