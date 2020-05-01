@@ -9,25 +9,12 @@ def index():
 
 @app.route("/<name>")
 def user(name):
-    return f"Hello {name}!"
+    return f"Hello {name}!"r
 
 if __name__ == "__main__":
     app.run(debug=True)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-#------------- OLD CODE --------------
+#---------- OLD CODE---------
 # from flask import Flask, render_template
 # from flask_mysqldb import MySQL
 
@@ -59,3 +46,5 @@ if __name__ == "__main__":
 #     passwd="Thecheezer1!",
 #     database="drinks_database"
 # )
+
+
