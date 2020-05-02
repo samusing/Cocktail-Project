@@ -7,11 +7,13 @@
 {% block body %}
 <h1> Make Cocktails Here</h1>
 
-<form>
+<form action="#" method="POST">
     <input type="text" name="cocktailName" placeholder="Cocktail Name"/>
     <input type="submit" name="submit" value="submit"/>
 </form>
 
-<p> You selected, {{cocktailName}}</p>
+{% if cocktailName %}
+    <p> You selected, {{cocktailName}}</p>
+{% endif %}
 
 {% endblock %} 
