@@ -6,16 +6,26 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.secret_key = "hello" #Define a secret key to encrypt and decrypt session data
 app.permanent_session_lifetime = timedelta(days=5) #Permanent Sessions. Session data is deleted when browser is closed. Session data is stored in a temporary directory on the server and length of session can be defined
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{root}:{Thecheezer1!}@localhost:3306/{drinks_database}'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Thecheezer1!@localhost:3306/drinks_database'
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Define our database object
 db = SQLAlchemy(app)
 
+db.Model.metadata.reflect(db.engine)
+
+class Cocktails(db.Model):
+    __tablename__ = 'cocktails'
+    __table_args__ = {'extend_existing':True}
+    c_id = db.Column(db.Integer, primary_key=True)
+    c_name = db.Column(db.String(200))
+    c_instructions = db.Column(db.String(200))
+
 @app.route("/", methods=["POST", "GET"])
 def index():
     if request.method == "POST":
         cocktailName = request.form["cocktailName"]
+        print(cocktailName)
     return render_template('index.html')
 
 @app.route("/login", methods=["POST", "GET"])
